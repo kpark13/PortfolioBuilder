@@ -1,9 +1,19 @@
+
+* {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 a, .btn-link {
-    color: #006bb7;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .btn-primary {
@@ -58,3 +68,91 @@ h1:focus {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
     text-align: start;
 }
+
+/*Start of navbar styles*/
+.nav-section {
+    background-color: whitesmoke;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.nav {
+    width: 95%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-links {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+}
+
+.nav-links a {
+    font-size: 1.5rem;
+    color: black;
+    transition: 0.5s;
+}
+
+.auth-btn {
+    padding: 5px 20px 5px 20px;
+    background-color: white;
+    border-radius: 10px;
+    border-width: 3px;
+    border-style: solid;
+}
+
+.login-btn {
+    background-color: black;
+}
+
+.login-btn a{
+    color: white;
+}
+
+#login {
+    color: white;
+    border-color: black;
+    transition: 0.5s;
+}
+
+#signup {
+    color: black;
+    border-color: white;
+    transition: 0.5s;
+}
+
+.norm-link {
+    font-size: 1.2rem;
+}
+
+.login-btn:hover{
+    background-color: white;
+    border-color: white;
+    color: black;
+}
+
+#login:hover {
+    color: black;
+    border-color: white;
+}
+
+.sign-btn:hover {
+    background-color: black;
+    border-color: black;
+    color: white;
+}
+
+#signup:hover {
+    color: white;
+    border-color: black;
+}
+/*End of navbar styles*/
+
+/*Start of hero styles*/
+
+/*End of hero styles*/
