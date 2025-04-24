@@ -96,3 +96,15 @@ main {
         right: 0.75rem;
         top: 0.5rem;
     }
+
+.full-image {
+    width: 80%;
+    height: auto;
+    position: relative;
+}
+
+    .full-image img {
+        width: 80%;
+        height: auto;
+        display: block;
+    }
