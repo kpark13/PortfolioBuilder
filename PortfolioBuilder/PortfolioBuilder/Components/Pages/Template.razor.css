@@ -1,0 +1,21 @@
+﻿.title {
+    margin: 8px;
+    margin-top: 25px;
+    margin-left: 50px;
+}
+
+.gallery img {
+    width: 30%;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: lightgrey;
+}
+
+.gallery {
+   display: flex;
+   flex-flow: wrap;
+   justify-content: space-evenly;
+}

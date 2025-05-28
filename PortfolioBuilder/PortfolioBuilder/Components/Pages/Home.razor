@@ -4,11 +4,13 @@
 
 <!-- Full-sized image -->
 <div class="hero-container">
-    <img src="Images/HomePage.png" alt="Full-sized image"/>
+    <img src="Images/HomePage.png" alt="Full-sized image" />
     <div class="hero-text">
         <h1 id="hero-title">Your work should speak for itself</h1>
         <p id="hero-p">A minimalist portfolio platform designed for creatives</p>
-        <button id="hero-btn">START YOUR FREE TRIAL</button>
+        <a href="/Signup" class="btn btn-primary" id="hero-btn">
+            START YOUR FREE TRIAL
+        </a>
     </div>
 </div>
 
@@ -16,70 +18,110 @@
     <h1 id="subscription-title">Choose your plan</h1>
     <p id="subscription-p">Find the plan that's right for you</p>
 
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <button type="button" class="btn btn-secondary">Monthly</button>
-        <button type="button" class="btn btn-secondary">Annually</button>
+    <div class="btn-group mb-3" role="group" aria-label="Billing toggle">
+        <button type="button" class="btn btn-primary" id="monthly-btn">Monthly</button>
+        <button type="button" class="btn btn-secondary" id="annual-btn">Annually</button>
     </div>
-    <div class="subscription-cards">
+
+    <div class="subscription-cards d-flex gap-3 flex-wrap">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h6 class="card-title">BASIC</h6>
-                <strong><h1>$9</h1></strong>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Choose this plan</a>
+                <strong><h1 id="basic-price">$9</h1></strong>
+                <p class="card-text" id="basic-note">Billed monthly</p>
+                <a href="/Signup" class="btn btn-primary">Choose this plan</a>
             </div>
         </div>
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h6 class="card-title">PROFESSIONAL</h6>
-                <strong><h1>$19</h1></strong>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Choose this plan</a>
+                <strong><h1 id="pro-price">$19</h1></strong>
+                <p class="card-text" id="pro-note">Billed monthly</p>
+                <a href="/Signup" class="btn btn-primary">Choose this plan</a>
             </div>
         </div>
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h6 class="card-title">PREMIUM</h6>
-                <strong><h1>$49</h1></strong>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#" class="btn btn-primary">Choose this plan</a>
+                <strong><h1 id="premium-price">$49</h1></strong>
+                <p class="card-text" id="premium-note">Billed monthly</p>
+                <a href="/Signup" class="btn btn-primary">Choose this plan</a>
             </div>
         </div>
     </div>
 </div>
 
+<!-- Font Awesome -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
-<footer class="footer">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-md-6">
-                <div class="footer-brand">CompanyName</div>
-                <p class="footer-text">
-                    Creating amazing experiences and innovative solutions for our customers
-                    worldwide.
-                </p>
-                <div class="social-links">
-                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
+<!-- Pricing Toggle Script -->
+<script>
+    const monthlyPrices = {
+        basic: 9,
+        pro: 19,
+        premium: 49
+    };
 
-            <div class="col-md-6 text-md-end">
-                <ul class="footer-links">
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Privacy</a></li>
-                    <li><a href="#">Terms</a></li>
-                </ul>
-            </div>
-        </div>
+    const annualPrices = {
+        basic: 100,
+        pro: 200,
+        premium: 400
+    };
 
-        <div class="copyright text-center">
-            © 2024 CompanyName. All rights reserved.
-        </div>
-    </div>
-</footer>
+    const basicPriceEl = document.getElementById("basic-price");
+    const proPriceEl = document.getElementById("pro-price");
+    const premiumPriceEl = document.getElementById("premium-price");
+
+    const basicNote = document.getElementById("basic-note");
+    const proNote = document.getElementById("pro-note");
+    const premiumNote = document.getElementById("premium-note");
+
+    const monthlyBtn = document.getElementById("monthly-btn");
+    const annualBtn = document.getElementById("annual-btn");
+
+    function calculateSavings(monthly, annual) {
+        const monthlyTotal = monthly * 12;
+        const savings = ((monthlyTotal - annual) / monthlyTotal) * 100;
+        return Math.round(savings);
+    }
+
+    function setMonthly() {
+        basicPriceEl.innerText = `$${monthlyPrices.basic}`;
+        proPriceEl.innerText = `$${monthlyPrices.pro}`;
+        premiumPriceEl.innerText = `$${monthlyPrices.premium}`;
+
+        basicNote.innerText = "Billed monthly";
+        proNote.innerText = "Billed monthly";
+        premiumNote.innerText = "Billed monthly";
+
+        monthlyBtn.classList.add("btn-primary");
+        monthlyBtn.classList.remove("btn-secondary");
+        annualBtn.classList.remove("btn-primary");
+        annualBtn.classList.add("btn-secondary");
+    }
+
+    function setAnnually() {
+        const basicSavings = calculateSavings(monthlyPrices.basic, annualPrices.basic);
+        const proSavings = calculateSavings(monthlyPrices.pro, annualPrices.pro);
+        const premiumSavings = calculateSavings(monthlyPrices.premium, annualPrices.premium);
+
+        basicPriceEl.innerText = `$${annualPrices.basic}`;
+        proPriceEl.innerText = `$${annualPrices.pro}`;
+        premiumPriceEl.innerText = `$${annualPrices.premium}`;
+
+        basicNote.innerText = `Billed annually – save ${basicSavings}%`;
+        proNote.innerText = `Billed annually – save ${proSavings}%`;
+        premiumNote.innerText = `Billed annually – save ${premiumSavings}%`;
+
+        annualBtn.classList.add("btn-primary");
+        annualBtn.classList.remove("btn-secondary");
+        monthlyBtn.classList.remove("btn-primary");
+        monthlyBtn.classList.add("btn-secondary");
+    }
+
+    monthlyBtn.addEventListener("click", setMonthly);
+    annualBtn.addEventListener("click", setAnnually);
+
+    // Initialize default to monthly
+    setMonthly();
+</script>

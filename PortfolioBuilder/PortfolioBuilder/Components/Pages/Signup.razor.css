@@ -1,0 +1,40 @@
+﻿/* Fix invalid selector */
+.container {
+    padding: 16px;
+    max-width: 400px;
+    margin: 100px auto;
+    background: white;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+/* Remove thick border that was making it look too wide */
+form {
+    padding: 20px;
+}
+
+/* Input styles */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Button style */
+button {
+    background-color: black;
+    color: white;
+    padding: 14px 20px;
+    margin: 12px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 4px;
+}
+
+    button:hover {
+        opacity: 0.8;
+    }
