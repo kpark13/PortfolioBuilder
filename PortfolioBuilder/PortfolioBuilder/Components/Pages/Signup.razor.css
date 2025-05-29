@@ -6,6 +6,8 @@
     background: white;
     border-radius: 6px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+    top: -40px;
 }
 
 /* Remove thick border that was making it look too wide */
@@ -38,3 +40,7 @@ button {
     button:hover {
         opacity: 0.8;
     }
+form {
+    transform: scale(1.3); /* 1.0 is default, 1.2 is 20% bigger */
+    transform-origin: center;
+}

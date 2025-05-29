@@ -1,18 +1,29 @@
-.hero-container img {
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-}
-
 .hero-container {
     position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 
+    .hero-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+
+        object-fit: cover;
+        z-index: 0;
+    }
+
 .hero-text {
-    color: white;
     position: absolute;
     top: 100px;
     left: 100px;
+    z-index: 1;
+    color: white;
 }
 
 #hero-title {
@@ -38,17 +49,21 @@
     font-weight: 550;
     background-color: whitesmoke;
 }
+
+/* Subscription styles unchanged below */
 #subscription-title {
-    text-align: center; /* Centers the text horizontally */
-    margin: 1rem 0; /* Optional: Add spacing above and below */
-    font-size: 2.25rem; /* Adjust the font size as needed */
-    font-weight: 550; /* Optional: Make the title bold */
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 2.25rem;
+    font-weight: 550;
 }
+
 #subscription-p {
-    font-size: 1.25rem; /* Adjust the font size as needed */
-    color: dimgrey
+    font-size: 1.25rem;
+    color: dimgrey;
 }
-.btn-group button{
+
+.btn-group button {
     margin: 0.25rem 0;
     background-color: #343a40;
 }
@@ -56,24 +71,26 @@
 .subscription-tiers {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers content horizontally */
-    justify-content: center; /* Centers content vertically */
-    height: 100%; /* Ensure the container has a height */
+    align-items: center;
+    justify-content: center;
+    height: 100%;
 }
 
 .subscription-cards {
     margin: 0.75rem 0;
     display: flex;
-    flex-wrap: wrap; /* Allows wrapping if there are too many cards to fit in one row */
-    gap: 1rem; /* Adds spacing between cards */
-    justify-content: center; /* Centers the cards horizontally */
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
 }
+
     .subscription-cards a {
         background-color: #343a40;
         border-color: #343a40;
     }
+
 .card {
-    flex: 1 1 calc(33.333% - 1rem); /* Makes each card take up 1/3 of the row, minus the gap */
-    max-width: 18rem; /* Ensures cards don't exceed their intended width */
-    box-sizing: border-box; /* Includes padding and border in the width calculation */
+    flex: 1 1 calc(33.333% - 1rem);
+    max-width: 18rem;
+    box-sizing: border-box;
 }

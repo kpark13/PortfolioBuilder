@@ -1,290 +1,99 @@
 ﻿@page "/Example"
 
-<head>
-    <title>My example Website</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            font-family: sans-serif;
-            background: white;
-            overflow-x: hidden;
-        }
+<div class="edit-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">Edit</div>
 
-        input[type="checkbox"] {
-            display: none;
-        }
+<div class="sidebar">
+    <h3>Upload Photos</h3>
+    <div class="upload-section">
+        <label>Page 1:</label>
+        <input type="file" />
+    </div>
+    <div class="upload-section">
+        <label>Page 2:</label>
+        <input type="file" />
+    </div>
+    <div class="upload-section">
+        <label>Page 3:</label>
+        <input type="file" />
+    </div>
+    <div class="upload-section">
+        <label>Page 4:</label>
+        <input type="file" />
+    </div>
+    <div class="upload-section">
+        <label>Page 5:</label>
+        <input type="file" />
+    </div>
+    <div class="upload-section">
+        <label>Page 6:</label>
+        <input type="file" />
+    </div>
+    <div class="upload-section">
+        <label>+ page</label>
+    </div>
+</div>
 
-        img {
-            width: 100%;
-            margin-top: 15px;
-        }
+<div class="book">
+    <input type="checkbox" id="c1">
+    <input type="checkbox" id="c2">
+    <input type="checkbox" id="c3">
+    <input type="checkbox" id="c4">
+    <input type="checkbox" id="c5">
 
-        h1 {
-            font-size: 26px;
-        }
-
-        h2 {
-            margin-top: 65px;
-            font-size: 22px;
-        }
-
-        .book {
-            display: flex;
-        }
-
-        #cover {
-            width: 400px;
-            height: 550px;
-        }
-
-        .flip-book {
-            width: 400px;
-            height: 550px;
-            position: relative;
-            perspective: 1500px;
-        }
-
-        .flip {
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transform-origin: center left;
-            transform-style: preserve-3d;
-            transition: 0.5s;
-            color: #000;
-        }
-
-        .front,
-        .back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-color: #fff;
-            box-sizing: border-box;
-            padding: 0 13px;
-            border: 2px solid lightgray;
-        }
-
-        .back {
-            z-index: 99;
-            transform: rotateY(180deg);
-            backface-visibility: hidden;
-        }
-
-        .next-btn,
-        .back-btn {
-            position: absolute;
-            border: 2px solid black;
-            border-radius: 10px;
-            padding: 4px;
-            bottom: 13px;
-            right: 13px;
-            cursor: pointer;
-            color: #000;
-        }
-
-        #p1 {
-            z-index: 5;
-        }
-
-        #p2 {
-            z-index: 4;
-        }
-
-        #p3 {
-            z-index: 3;
-        }
-
-        #p4 {
-            z-index: 2;
-        }
-
-        #p5 {
-            z-index: 1;
-        }
-
-        #c1:checked ~ .flip-book #p1 {
-            transform: rotateY(-180deg);
-            z-index: 1;
-        }
-
-        #c2:checked ~ .flip-book #p2 {
-            transform: rotateY(-180deg);
-            z-index: 2;
-        }
-
-        #c3:checked ~ .flip-book #p3 {
-            transform: rotateY(-180deg);
-            z-index: 3;
-        }
-
-        #c4:checked ~ .flip-book #p4 {
-            transform: rotateY(-180deg);
-            z-index: 4;
-        }
-
-        #c5:checked ~ .flip-book #p5 {
-            transform: rotateY(-180deg);
-            z-index: 5;
-        }
-
-        /* Edit button on the right */
-        .edit-btn {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: grey;
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            z-index: 999;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 300px;
-            height: 100vh;
-            background: #f9f9f9;
-            box-shadow: -2px 0 5px grey;
-            transition: right 0.3s ease-in-out;
-            padding: 20px;
-            z-index: 998;
-        }
-
-            .sidebar.open {
-                right: 0;
-            }
-
-            .sidebar h3 {
-                font-size: 20px;
-                margin-bottom: 15px;
-            }
-
-            .sidebar .upload-section {
-                margin-bottom: 20px;
-                text-align: left;
-            }
-
-                .sidebar .upload-section label {
-                    display: block;
-                    font-size: 14px;
-                    margin-bottom: 5px;
-                }
-
-                .sidebar .upload-section input {
-                    width: 100%;
-                }
-    </style>
-</head>
-<body>
-    <div class="edit-btn" onclick="document.querySelector('.sidebar').classList.toggle('open')">Edit</div>
-
-    <div class="sidebar">
-        <h3>Upload Photos</h3>
-        <div class="upload-section">
-            <label>Page 1:</label>
-            <input type="file" />
-        </div>
-        <div class="upload-section">
-            <label>Page 2:</label>
-            <input type="file" />
-        </div>
-        <div class="upload-section">
-            <label>Page 3:</label>
-            <input type="file" />
-        </div>
-        <div class="upload-section">
-            <label>Page 4:</label>
-            <input type="file" />
-        </div>
-        <div class="upload-section">
-            <label>Page 5:</label>
-            <input type="file" />
-        </div>
-        <div class="upload-section">
-            <label>+ page</label>
-        </div>
+    <div id="cover">
+        <!-- Cover page image -->
     </div>
 
-    <div class="book">
-        <input type="checkbox" id="c1">
-        <input type="checkbox" id="c2">
-        <input type="checkbox" id="c3">
-        <input type="checkbox" id="c4">
-        <input type="checkbox" id="c5">
-
-        <div id="cover">
-            <!-- Cover page image -->
+    <div class="flip-book">
+        <div class="flip" id="p1">
+            <div class="back">
+                <label class="back-btn" for="c1">Back</label>
+            </div>
+            <div class="front" style="background:darkblue; color:white;">
+                <label class="next-btn" for="c1" style="color:white;border:1px solid white;">Open</label>
+            </div>
         </div>
 
-        <div class="flip-book">
-            <div class="flip" id="p1">
-                <div class="back">
-                    <img src="Images/photo7.jpg" alt="Page 1 Front (Title)" />
-                    <label class="back-btn" for="c1">Back</label>
-                </div>
-                <div class="front" style="background:darkblue; color:white;">
-                    
-                    <label class="next-btn" for="c1" style="color:white;border:1px solid white;">Open</label>
-                </div>
+        <div class="flip" id="p2">
+            <div class="back">
+                <img src="Images/photo5.jpg" alt="Page 2 Back" />
+                <label class="back-btn" for="c2">Back</label>
             </div>
-
-            <div class="flip" id="p2">
-                <div class="back">
-                    <img src="Images/photo5.jpg" alt="Page 2 Back" />
-                    <label class="back-btn" for="c2">Back</label>
-                </div>
-                <div class="front">
-                    <img src="Images/photo2.jpg" alt="Page 2 Front" />
-                    <label class="next-btn" for="c2">Next</label>
-                </div>
+            <div class="front">
+                <img src="Images/photo2.jpg" alt="Page 2 Front" />
+                <label class="next-btn" for="c2">Next</label>
             </div>
+        </div>
 
-            <div class="flip" id="p3">
-                <div class="back">
-                    <img src="Images/photo3.jpg" alt="Page 3 Back" />
-                    <label class="back-btn" for="c3">Back</label>
-                </div>
-                <div class="front">
-                    <img src="Images/photo9.jpg" alt="Page 3 Front" />
-                    <label class="next-btn" for="c3">Next</label>
-                </div>
+        <div class="flip" id="p3">
+            <div class="back">
+                <img src="Images/photo3.jpg" alt="Page 3 Back" />
+                <label class="back-btn" for="c3">Back</label>
             </div>
-
-            <div class="flip" id="p4">
-                <div class="back">
-                    <img src="Images/photo10.jpg" alt="Page 4 Back" />
-                    <label class="back-btn" for="c4">Back</label>
-                </div>
-                <div class="front">
-                    <img src="Images/photo8.jpg" alt="Page 4 Front" />
-                    <label class="next-btn" for="c4">Next</label>
-                </div>
+            <div class="front">
+                <img src="Images/photo7.jpg" alt="Page 3 Front" />
+                <label class="next-btn" for="c3">Next</label>
             </div>
+        </div>
 
-            <div class="flip" id="p5">
-                <div class="back" style="color:white; background:darkblue;">
-                    
-                    <label class="back-btn" for="c5" style="color:white;border:1px solid white;">Back</label>
-                </div>
-                <div class="front">
-                    <label class="next-btn" for="c5">Next</label>
-                </div>
+        <div class="flip" id="p4">
+            <div class="back">
+                <img src="Images/photo1.jpg" alt="Page 4 Back" />
+                <label class="back-btn" for="c4">Back</label>
+            </div>
+            <div class="front">
+                <img src="Images/photo8.jpg" alt="Page 4 Front" />
+                <label class="next-btn" for="c4">Next</label>
+            </div>
+        </div>
+
+        <div class="flip" id="p5">
+            <div class="back" style="color:white; background:darkblue;">
+                <label class="back-btn" for="c5" style="color:white;border:1px solid white;">Back</label>
+            </div>
+            <div class="front">
+                <label class="next-btn" for="c5">Next</label>
             </div>
         </div>
     </div>
-</body>
+</div>

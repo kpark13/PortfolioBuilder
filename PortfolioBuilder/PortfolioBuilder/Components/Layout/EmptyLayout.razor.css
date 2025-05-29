@@ -1,25 +1,14 @@
-html, body {
-    height: 100%;
-    margin: 0;
-}
-
 .page {
+    position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
 }
 
 main {
     flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem;
 }
 
-footer {
-    margin-top: auto;
-}
+
 
 #blazor-error-ui {
     color-scheme: light only;
@@ -41,3 +30,9 @@ footer {
         right: 0.75rem;
         top: 0.5rem;
     }
+
+.full-image {
+    width: 0vw;
+    height: auto;
+    position: relative;
+}
