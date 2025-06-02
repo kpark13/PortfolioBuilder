@@ -1,0 +1,52 @@
+﻿#subscription-title {
+    text-align: center;
+    margin: 0rem 0; /* Reduced margin to shift up */
+    font-size: 2.25rem;
+    font-weight: 550;
+}
+
+#subscription-p {
+    font-size: 1.25rem;
+    color: dimgrey;
+    margin-bottom: 0.5rem;
+}
+
+.btn-group button {
+    margin: 0.25rem;
+    background-color: #000;
+    border-color: #000;
+    color: white;
+}
+
+.subscription-tiers {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: -9rem; /* Add some padding for spacing */
+}
+
+.subscription-cards {
+    margin: 0.5rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+    .subscription-cards a {
+        background-color: #000;
+        border-color: #000;
+        color: white;
+    }
+
+.card {
+    flex: 1 1 calc(33.333% - 1rem);
+    max-width: 18rem;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Drop shadow */
+    transition: transform 0.2s;
+}
+
+    .card:hover {
+        transform: translateY(-3px);
+    }

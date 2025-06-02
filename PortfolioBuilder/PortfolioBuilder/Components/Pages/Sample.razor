@@ -1,0 +1,67 @@
+﻿@page "/Sample"
+
+
+<div class="book">
+    <input type="checkbox" id="c1">
+    <input type="checkbox" id="c2">
+    <input type="checkbox" id="c3">
+    <input type="checkbox" id="c4">
+    <input type="checkbox" id="c5">
+
+    <div id="cover">
+        <!-- Cover page image -->
+    </div>
+
+    <div class="flip-book">
+        <div class="flip" id="p1">
+            <div class="back">
+                <label class="back-btn" for="c1">Back</label>
+            </div>
+            <div class="front" style="background:darkblue; color:white;">
+                <label class="next-btn" for="c1" style="color:white;border:1px solid white;">Open</label>
+            </div>
+        </div>
+
+        <div class="flip" id="p2">
+            <div class="back">
+                <img src="Images/photo5.jpg" alt="Page 2 Back" />
+                <label class="back-btn" for="c2">Back</label>
+            </div>
+            <div class="front">
+                <img src="Images/photo2.jpg" alt="Page 2 Front" />
+                <label class="next-btn" for="c2">Next</label>
+            </div>
+        </div>
+
+        <div class="flip" id="p3">
+            <div class="back">
+                <img src="Images/photo3.jpg" alt="Page 3 Back" />
+                <label class="back-btn" for="c3">Back</label>
+            </div>
+            <div class="front">
+                <img src="Images/photo7.jpg" alt="Page 3 Front" />
+                <label class="next-btn" for="c3">Next</label>
+            </div>
+        </div>
+
+        <div class="flip" id="p4">
+            <div class="back">
+                <img src="Images/photo1.jpg" alt="Page 4 Back" />
+                <label class="back-btn" for="c4">Back</label>
+            </div>
+            <div class="front">
+                <img src="Images/photo8.jpg" alt="Page 4 Front" />
+                <label class="next-btn" for="c4">Next</label>
+            </div>
+        </div>
+
+        <div class="flip" id="p5">
+            <div class="back" style="color:white; background:darkblue;">
+                <label class="back-btn" for="c5" style="color:white;border:1px solid white;">Back</label>
+            </div>
+            <div class="front">
+                <label class="next-btn" for="c5">Next</label>
+            </div>
+        </div>
+    </div>
+</div>

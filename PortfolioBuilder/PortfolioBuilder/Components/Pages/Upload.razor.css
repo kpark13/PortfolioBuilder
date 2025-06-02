@@ -1,0 +1,5 @@
+﻿.upload-box {
+    margin-top: -12rem; /* Adjust as needed; use 0.5rem or negative values to move higher */
+    max-width: 500px;
+    width: 100%;
+}

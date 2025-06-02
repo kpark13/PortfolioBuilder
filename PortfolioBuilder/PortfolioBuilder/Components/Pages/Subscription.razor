@@ -1,0 +1,128 @@
+﻿@page "/Subscription"
+
+<div class="subscription-tiers">
+    <h1 id="subscription-title">Choose your plan</h1>
+    <p id="subscription-p">Find the plan that's right for you</p>
+
+    <div class="btn-group mb-3" role="group" aria-label="Billing toggle">
+        <button type="button" class="btn btn-primary" id="monthly-btn">Monthly</button>
+        <button type="button" class="btn btn-secondary" id="annual-btn">Annually</button>
+    </div>
+
+    <div class="subscription-cards d-flex gap-3 flex-wrap">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h6 class="card-title">BASIC</h6>
+                <strong><h1 id="basic-price">$9</h1></strong>
+                <p class="card-text" id="basic-note">Billed monthly</p>
+                <ul>
+                    <li>1 portfolio template</li>
+                    <li>Up to 3 projects</li>
+                    <li>Custom domain not included</li>
+                    <li>Basic analytics</li>
+                    <li>Email support</li>
+                </ul>
+                <a href="/Payment" class="btn btn-primary">Choose this plan</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h6 class="card-title">PROFESSIONAL</h6>
+                <strong><h1 id="pro-price">$19</h1></strong>
+                <p class="card-text" id="pro-note">Billed monthly</p>
+                <ul>
+                    <li>5 portfolio templates</li>
+                    <li>Up to 15 projects</li>
+                    <li>Connect your custom domain</li>
+                    <li>Advanced analytics</li>
+                    <li>Email & priority chat support</li>
+                </ul>
+                <a href="/Payment" class="btn btn-primary">Choose this plan</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h6 class="card-title">PREMIUM</h6>
+                <strong><h1 id="premium-price">$49</h1></strong>
+                <p class="card-text" id="premium-note">Billed monthly</p>
+                <ul>
+                    <li>Unlimited templates & projects</li>
+                    <li>Custom domain + SSL</li>
+                    <li>Advanced analytics & SEO Analytics</li>
+                    <li>Priority support</li>
+                </ul>
+                <a href="/Payment" class="btn btn-primary">Choose this plan</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    const monthlyPrices = {
+        basic: 9,
+        pro: 19,
+        premium: 49
+    };
+
+    const annualPrices = {
+        basic: 100,
+        pro: 200,
+        premium: 400
+    };
+
+    const basicPriceEl = document.getElementById("basic-price");
+    const proPriceEl = document.getElementById("pro-price");
+    const premiumPriceEl = document.getElementById("premium-price");
+
+    const basicNote = document.getElementById("basic-note");
+    const proNote = document.getElementById("pro-note");
+    const premiumNote = document.getElementById("premium-note");
+
+    const monthlyBtn = document.getElementById("monthly-btn");
+    const annualBtn = document.getElementById("annual-btn");
+
+    function calculateSavings(monthly, annual) {
+        const monthlyTotal = monthly * 12;
+        const savings = ((monthlyTotal - annual) / monthlyTotal) * 100;
+        return Math.round(savings);
+    }
+
+    function setMonthly() {
+        basicPriceEl.innerText = `$${monthlyPrices.basic}`;
+        proPriceEl.innerText = `$${monthlyPrices.pro}`;
+        premiumPriceEl.innerText = `$${monthlyPrices.premium}`;
+
+        basicNote.innerText = "Billed monthly";
+        proNote.innerText = "Billed monthly";
+        premiumNote.innerText = "Billed monthly";
+
+        monthlyBtn.classList.add("btn-primary");
+        monthlyBtn.classList.remove("btn-secondary");
+        annualBtn.classList.remove("btn-primary");
+        annualBtn.classList.add("btn-secondary");
+    }
+
+    function setAnnually() {
+        const basicSavings = calculateSavings(monthlyPrices.basic, annualPrices.basic);
+        const proSavings = calculateSavings(monthlyPrices.pro, annualPrices.pro);
+        const premiumSavings = calculateSavings(monthlyPrices.premium, annualPrices.premium);
+
+        basicPriceEl.innerText = `$${annualPrices.basic}`;
+        proPriceEl.innerText = `$${annualPrices.pro}`;
+        premiumPriceEl.innerText = `$${annualPrices.premium}`;
+
+        basicNote.innerText = `Billed annually – save ${basicSavings}%`;
+        proNote.innerText = `Billed annually – save ${proSavings}%`;
+        premiumNote.innerText = `Billed annually – save ${premiumSavings}%`;
+
+        annualBtn.classList.add("btn-primary");
+        annualBtn.classList.remove("btn-secondary");
+        monthlyBtn.classList.remove("btn-primary");
+        monthlyBtn.classList.add("btn-secondary");
+    }
+
+    monthlyBtn.addEventListener("click", setMonthly);
+    annualBtn.addEventListener("click", setAnnually);
+
+    // Initialize default to monthly
+    setMonthly();
+</script>

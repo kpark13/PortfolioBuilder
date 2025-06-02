@@ -1,0 +1,78 @@
+﻿@page "/Upload"
+
+@inject IWebHostEnvironment WebHotEnv
+
+<PageTitle>Upload</PageTitle>
+
+<div class="container d-flex justify-content-center">
+    <div class="card shadow p-4 rounded-4 upload-box">
+
+        <h3 class="text-center mb-4">Upload your work</h3>
+
+        <EditForm Model="fileModel" enctype="multipart/form-data" FormName="file-form" OnSubmit="HandleFileUpload">
+            <div class="mb-3">
+                <label class="form-label">Select File</label>
+                <InputFile name="fileModel.File" class="form-control" />
+            </div>
+
+            <div class="mb-3 text-center">
+                <input type="submit" class="btn btn-dark rounded-pill px-4 py-2" value="Submit" />
+            </div>
+        </EditForm>
+
+        @if (!string.IsNullOrWhiteSpace(_uploadedImageUrl))
+        {
+            <div class="text-center mt-4">
+                <img src="@_uploadedImageUrl" class="img-fluid rounded shadow-sm" />
+            </div>
+        }
+    </div>
+</div>
+<a href="/Example" class="btn btn-dark position-fixed bottom-0 start-0 m-4 rounded-pill px-4 py-2 fw-semibold shadow">
+    ← Back
+</a>
+
+
+@code {
+    [SupplyParameterFromForm(FormName = "file-form")]
+    private FileModel fileModel { get; set; } = new();
+
+    private string? _uploadedImageUrl;
+
+    private static readonly HashSet<string> _imageExtension = new HashSet<string>([".jpg", ".jpeg", ".png", ".gif", ".webp"], StringComparer.OrdinalIgnoreCase);
+
+    private async Task HandleFileUpload()
+    {
+        var file = fileModel.File;
+        var folderPath = Path.Combine(WebHotEnv.WebRootPath, "uploads");
+        Directory.CreateDirectory(folderPath);
+
+        var filePath = Path.Combine(folderPath, file.FileName);
+
+        try
+        {
+            using (var fileStream = new FileStream(filePath, FileMode.Create))
+            {
+                using var uploadedFileStream = file.OpenReadStream();
+                await uploadedFileStream.CopyToAsync(fileStream);
+
+                var extension = Path.GetExtension(file.FileName);
+
+                if (_imageExtension.Contains(extension))
+                {
+                    _uploadedImageUrl = $"/uploads/{file.FileName}";
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+    }
+
+    private class FileModel
+    {
+        public string Name { get; set; } = string.Empty;
+        public IFormFile File { get; set; }
+    }
+}

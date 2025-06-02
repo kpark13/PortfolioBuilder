@@ -1,17 +1,19 @@
 ﻿@page "/Login"
 
-<form action="#" method="post" class="login-form">
+<div class="login-form">
     <div class="container">
         <label for="uname"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="uname" required>
+        <input type="text" placeholder="Enter Username" id="uname" required>
 
         <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="psw" required>
+        <input type="password" placeholder="Enter Password" id="psw" required>
 
         <label>
-            <input type="checkbox" checked name="remember"> Remember me
+            <input type="checkbox" checked id="remember"> Remember me
         </label>
 
-        <button href ="/Example" type="submit">Login</button>
+        <a href="/Wip">
+            <button type="button">Log in</button>
+        </a>
     </div>
-</form>
+</div>
